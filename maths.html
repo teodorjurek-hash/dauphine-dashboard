@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maths — Dauphine</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="maths">
+<div id="nav-placeholder"></div>
+
+<main class="page">
+  <h1 class="page-titre">Maths : lacunes et entraînement</h1>
+
+  <h2 class="page-titre" style="font-size:17px;">Lacunes de base</h2>
+  <div class="bento" id="grille-lacunes"></div>
+  <form class="groupe-boutons" id="formulaire-lacune" style="margin-bottom:20px;">
+    <input type="text" id="lacune-nom" placeholder="Ajouter une lacune…" style="flex:1; min-width:180px; padding:10px 12px; border-radius:10px; border:1px solid var(--bordure); background:var(--surface); color:var(--texte);" required />
+    <button type="submit" class="bouton bouton-primaire">Ajouter</button>
+  </form>
+
+  <h2 class="page-titre" style="font-size:17px;">Chapitres de spé maths</h2>
+  <div class="bento" id="grille-chapitres"></div>
+  <form class="groupe-boutons" id="formulaire-chapitre" style="margin-bottom:20px;">
+    <input type="text" id="chapitre-nom" placeholder="Ajouter un chapitre…" style="flex:1; min-width:180px; padding:10px 12px; border-radius:10px; border:1px solid var(--bordure); background:var(--surface); color:var(--texte);" required />
+    <button type="submit" class="bouton bouton-primaire">Ajouter</button>
+  </form>
+
+  <h2 class="page-titre" style="font-size:17px;">Journal d'exercices</h2>
+  <form class="bento-carte" id="formulaire-exercice" style="margin-bottom:20px;">
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="exo-date">Date</label>
+        <input type="date" id="exo-date" required />
+      </div>
+      <div class="champ">
+        <label for="exo-chapitre">Chapitre</label>
+        <select id="exo-chapitre"></select>
+      </div>
+      <div class="champ">
+        <label for="exo-nombre">Nombre d'exercices</label>
+        <input type="number" id="exo-nombre" min="1" value="5" />
+      </div>
+    </div>
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="exo-difficulte">Difficulté (1 à 5)</label>
+        <input type="number" id="exo-difficulte" min="1" max="5" value="3" />
+      </div>
+      <div class="champ">
+        <label for="exo-reussi">Réalisé</label>
+        <select id="exo-reussi">
+          <option value="seul">Réussi seul</option>
+          <option value="correction">Avec la correction</option>
+        </select>
+      </div>
+      <div class="champ">
+        <label for="exo-temps">Temps passé (minutes)</label>
+        <input type="number" id="exo-temps" min="1" value="30" />
+      </div>
+    </div>
+    <button type="submit" class="bouton bouton-primaire">Ajouter l'entrée</button>
+  </form>
+
+  <section class="bento">
+    <div class="bento-carte bento-span-2">
+      <div class="carte-label">Exercices par semaine (8 dernières semaines)</div>
+      <div id="graphique-semaines" style="margin-top:10px;"></div>
+    </div>
+    <div class="bento-carte bento-span-2">
+      <div class="carte-label">En regard des notes de maths</div>
+      <div id="correlation-notes" style="margin-top:6px;"></div>
+    </div>
+  </section>
+
+  <div class="tableau-conteneur" style="margin-bottom:40px;">
+    <table>
+      <thead><tr><th>Date</th><th>Chapitre</th><th>Exos</th><th>Difficulté</th><th>Réalisé</th><th>Temps</th><th></th></tr></thead>
+      <tbody id="corps-table-exercices"></tbody>
+    </table>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/calculs.js"></script>
+<script src="js/util.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/maths.js"></script>
+</body>
+</html>

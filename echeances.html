@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Échéances — Dauphine</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="echeances">
+<div id="nav-placeholder"></div>
+
+<main class="page">
+  <h1 class="page-titre">Échéances</h1>
+  <div class="note-avertissement">
+    Rappel : Parcoursup prend en compte les bulletins de première ainsi que ceux des 1er et 2e trimestres de terminale.
+  </div>
+
+  <div id="liste-echeances"></div>
+
+  <h2 class="page-titre" style="font-size:17px;">Ajouter une échéance</h2>
+  <form class="bento-carte" id="formulaire-echeance" style="margin-bottom:40px;">
+    <div class="champ">
+      <label for="ech-titre">Titre</label>
+      <input type="text" id="ech-titre" required />
+    </div>
+    <div class="ligne-champs ligne-champs-2">
+      <div class="champ">
+        <label for="ech-date">Date (laisser vide si inconnue)</label>
+        <input type="datetime-local" id="ech-date" />
+      </div>
+      <div class="champ">
+        <label for="ech-statut">Statut de la date</label>
+        <select id="ech-statut">
+          <option value="à vérifier">À vérifier</option>
+          <option value="confirmée">Confirmée</option>
+        </select>
+      </div>
+    </div>
+    <div class="champ">
+      <label for="ech-description">Description</label>
+      <input type="text" id="ech-description" />
+    </div>
+    <button type="submit" class="bouton bouton-primaire">Ajouter</button>
+  </form>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/calculs.js"></script>
+<script src="js/util.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/echeances.js"></script>
+</body>
+</html>

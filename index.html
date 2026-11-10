@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tableau de bord — Dauphine</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="dashboard">
+<div id="nav-placeholder"></div>
+
+<main class="page">
+  <h1 class="page-titre">Tableau de bord</h1>
+
+  <div class="groupe-boutons" id="selecteur-periode" role="group" aria-label="Période"></div>
+
+  <section class="bento">
+    <div class="bento-carte bento-span-2">
+      <div class="carte-label">Moyenne générale</div>
+      <div class="carte-valeur" id="moy-generale-valeur">—</div>
+      <div class="jauge-barre"><div class="jauge-remplissage" id="moy-generale-barre"></div></div>
+      <div class="jauge-legende">
+        <span id="moy-generale-objectif-texte"></span>
+        <span id="moy-generale-ecart-texte"></span>
+      </div>
+    </div>
+
+    <div class="bento-carte">
+      <div class="carte-label">Vs. moyenne de classe</div>
+      <div class="carte-valeur" id="moy-classe-ecart">—</div>
+      <div class="carte-sous" id="moy-classe-texte"></div>
+    </div>
+
+    <div class="bento-carte">
+      <div class="carte-label">Prochaine échéance</div>
+      <div class="carte-valeur" id="echeance-compte-a-rebours">—</div>
+      <div class="carte-sous" id="echeance-texte"></div>
+    </div>
+  </section>
+
+  <h2 class="page-titre" style="font-size:17px;">Par matière</h2>
+  <section class="bento" id="grille-matieres"></section>
+
+  <h2 class="page-titre" style="font-size:17px;">Où gagner le plus de points</h2>
+  <div class="bento-carte bento-span-full" id="carte-gains" style="margin-bottom:20px;"></div>
+
+  <div class="note-avertissement" id="avertissement-coherence" hidden></div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/calculs.js"></script>
+<script src="js/util.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

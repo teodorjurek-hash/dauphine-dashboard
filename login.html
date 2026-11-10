@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Connexion — Dauphine</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="login">
+<main class="page" style="max-width:420px; padding-top:48px;">
+  <h1 class="page-titre" style="text-align:center;">Dauphine · Tableau de bord</h1>
+  <p class="page-soustitre" style="text-align:center;">Connecte-toi pour retrouver tes données sur tous tes appareils.</p>
+
+  <div class="bento-carte">
+    <div class="champ">
+      <label for="email">Email</label>
+      <input type="email" id="email" autocomplete="email" required />
+    </div>
+    <div class="champ">
+      <label for="mot-de-passe">Mot de passe</label>
+      <input type="password" id="mot-de-passe" autocomplete="current-password" required />
+    </div>
+
+    <div id="message-erreur" class="note-avertissement" hidden></div>
+
+    <div class="groupe-boutons" style="margin-top:4px;">
+      <button type="button" class="bouton bouton-primaire" id="bouton-connexion" style="flex:1;">Se connecter</button>
+      <button type="button" class="bouton" id="bouton-creation" style="flex:1;">Créer un compte</button>
+    </div>
+    <button type="button" class="bouton bouton-discret bouton-petit" id="bouton-oubli" style="margin-top:8px;">Mot de passe oublié ?</button>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

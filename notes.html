@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notes et calculateur — Dauphine</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="notes">
+<div id="nav-placeholder"></div>
+
+<main class="page">
+  <h1 class="page-titre">Notes et calculateur</h1>
+
+  <div class="groupe-boutons" id="selecteur-periode" role="group" aria-label="Période"></div>
+
+  <section class="bento-carte" style="margin-bottom:20px;">
+    <div class="carte-label">Réglages généraux</div>
+    <div class="ligne-champs ligne-champs-2">
+      <div class="champ">
+        <label for="champ-objectif-general">Objectif général (/20)</label>
+        <input type="number" id="champ-objectif-general" step="0.1" min="0" max="20" />
+      </div>
+      <div class="champ">
+        <label for="champ-moyenne-classe-generale">Moyenne générale de classe (ce trimestre)</label>
+        <input type="number" id="champ-moyenne-classe-generale" step="0.01" min="0" max="20" />
+      </div>
+    </div>
+    <div class="note-avertissement" id="avertissement-coherence" hidden></div>
+  </section>
+
+  <h2 class="page-titre" style="font-size:17px;">Matières</h2>
+  <div class="tableau-conteneur" style="margin-bottom:20px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Matière</th>
+          <th>Coef. matière</th>
+          <th>Objectif</th>
+          <th>Moy. classe</th>
+          <th>Moyenne actuelle</th>
+        </tr>
+      </thead>
+      <tbody id="corps-table-matieres"></tbody>
+    </table>
+  </div>
+
+  <h2 class="page-titre" style="font-size:17px;">Ajouter une note</h2>
+  <form class="bento-carte" id="formulaire-note" style="margin-bottom:20px;">
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="note-matiere">Matière</label>
+        <select id="note-matiere" required></select>
+      </div>
+      <div class="champ">
+        <label for="note-trimestre">Trimestre</label>
+        <select id="note-trimestre" required>
+          <option value="T1">Trimestre 1</option>
+          <option value="T2">Trimestre 2</option>
+          <option value="T3">Trimestre 3</option>
+        </select>
+      </div>
+      <div class="champ">
+        <label for="note-type">Type</label>
+        <select id="note-type">
+          <option value="note">Note</option>
+          <option value="absence">Absence (ne compte pas)</option>
+        </select>
+      </div>
+    </div>
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="note-valeur">Note</label>
+        <input type="number" id="note-valeur" step="0.01" />
+      </div>
+      <div class="champ">
+        <label for="note-bareme">Barème</label>
+        <input type="number" id="note-bareme" step="0.01" value="20" />
+      </div>
+      <div class="champ">
+        <label for="note-coef">Coefficient</label>
+        <input type="number" id="note-coef" step="0.1" value="1" />
+      </div>
+    </div>
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="note-date">Date</label>
+        <input type="date" id="note-date" />
+      </div>
+      <div class="champ">
+        <label for="note-statut">Statut</label>
+        <select id="note-statut">
+          <option value="compte">Compte</option>
+          <option value="attente">Ne compte pas encore</option>
+        </select>
+      </div>
+      <div class="champ">
+        <label for="note-commentaire">Commentaire</label>
+        <input type="text" id="note-commentaire" />
+      </div>
+    </div>
+    <button type="submit" class="bouton bouton-primaire">Ajouter la note</button>
+  </form>
+
+  <h2 class="page-titre" style="font-size:17px;">Historique des notes</h2>
+  <div class="groupe-boutons" id="filtre-matiere-historique"></div>
+  <div class="tableau-conteneur" style="margin-bottom:20px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Matière</th><th>Trim.</th><th>Note</th><th>/20</th><th>Coef</th><th>Date</th><th>Statut</th><th>Commentaire</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="corps-table-notes"></tbody>
+    </table>
+  </div>
+
+  <h2 class="page-titre" style="font-size:17px;">Quelle note me faut-il ?</h2>
+  <div class="bento-carte" style="margin-bottom:20px;">
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="calc-matiere">Matière</label>
+        <select id="calc-matiere"></select>
+      </div>
+      <div class="champ">
+        <label for="calc-trimestre">Trimestre</label>
+        <select id="calc-trimestre">
+          <option value="T1">Trimestre 1</option>
+          <option value="T2">Trimestre 2</option>
+          <option value="T3">Trimestre 3</option>
+          <option value="ANNEE">Année</option>
+        </select>
+      </div>
+      <div class="champ">
+        <label for="calc-coef">Coef. du prochain contrôle</label>
+        <input type="number" id="calc-coef" step="0.1" value="1" />
+      </div>
+    </div>
+    <div class="champ">
+      <label for="calc-objectif">Objectif pour cette matière (/20)</label>
+      <input type="number" id="calc-objectif" step="0.1" />
+    </div>
+    <button type="button" class="bouton bouton-primaire" id="bouton-calculer">Calculer</button>
+    <div class="carte-sous" id="resultat-calcul" style="margin-top:10px;"></div>
+  </div>
+
+  <h2 class="page-titre" style="font-size:17px;">Simulateur « Et si… »</h2>
+  <div class="bento-carte" style="margin-bottom:20px;">
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="sim-matiere">Matière</label>
+        <select id="sim-matiere"></select>
+      </div>
+      <div class="champ">
+        <label for="sim-trimestre">Trimestre</label>
+        <select id="sim-trimestre">
+          <option value="T1">Trimestre 1</option>
+          <option value="T2">Trimestre 2</option>
+          <option value="T3">Trimestre 3</option>
+        </select>
+      </div>
+      <div class="champ">
+        <label for="sim-note">Note hypothétique</label>
+        <input type="number" id="sim-note" step="0.01" />
+      </div>
+    </div>
+    <div class="ligne-champs ligne-champs-2">
+      <div class="champ">
+        <label for="sim-bareme">Barème</label>
+        <input type="number" id="sim-bareme" step="0.01" value="20" />
+      </div>
+      <div class="champ">
+        <label for="sim-coef">Coefficient</label>
+        <input type="number" id="sim-coef" step="0.1" value="1" />
+      </div>
+    </div>
+    <button type="button" class="bouton bouton-primaire" id="bouton-simuler">Simuler (non enregistré)</button>
+    <div class="carte-sous" id="resultat-simulation" style="margin-top:10px;"></div>
+  </div>
+
+  <h2 class="page-titre" style="font-size:17px;">Sauvegarde</h2>
+  <div class="bento-carte" style="margin-bottom:40px;">
+    <p class="carte-sous">Tes données sont sauvegardées automatiquement sur cet appareil. Exporte un fichier JSON pour les garder en sécurité ou les transférer sur un autre appareil.</p>
+    <div class="groupe-boutons">
+      <button type="button" class="bouton bouton-primaire" id="bouton-exporter">Exporter (JSON)</button>
+      <button type="button" class="bouton" id="bouton-importer">Importer (JSON)</button>
+      <input type="file" id="champ-import-fichier" accept="application/json" hidden />
+    </div>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/calculs.js"></script>
+<script src="js/util.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/notes.js"></script>
+</body>
+</html>

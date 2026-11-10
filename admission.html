@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admission Dauphine — Dauphine</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="admission">
+<div id="nav-placeholder"></div>
+
+<main class="page">
+  <h1 class="page-titre">Admission Dauphine</h1>
+  <div class="note-avertissement">
+    Ce tableau de bord n'affiche et ne calcule jamais de « pourcentage de chances d'admission ». Toute information non vérifiée est marquée « à vérifier ».
+  </div>
+
+  <h2 class="page-titre" style="font-size:17px;">Liens utiles</h2>
+  <div id="liste-liens" style="margin-bottom:20px;"></div>
+
+  <h2 class="page-titre" style="font-size:17px;">Chiffres relevés par toi, année par année</h2>
+  <p class="page-soustitre">Note ici ce que tu trouves sur les fiches Parcoursup et les rapports publics de Dauphine — jamais de chiffre deviné.</p>
+
+  <form class="bento-carte" id="formulaire-releve" style="margin-bottom:20px;">
+    <div class="ligne-champs ligne-champs-3">
+      <div class="champ">
+        <label for="rel-annee">Année</label>
+        <input type="number" id="rel-annee" min="2020" max="2100" required />
+      </div>
+      <div class="champ">
+        <label for="rel-formation">Formation</label>
+        <input type="text" id="rel-formation" placeholder="Licence Maths-Informatique…" required />
+      </div>
+      <div class="champ">
+        <label for="rel-places">Nombre de places</label>
+        <input type="text" id="rel-places" placeholder="ex. 120, ou « à vérifier »" />
+      </div>
+    </div>
+    <div class="ligne-champs ligne-champs-2">
+      <div class="champ">
+        <label for="rel-taux">Taux d'accès</label>
+        <input type="text" id="rel-taux" placeholder="ex. 12 %, ou « à vérifier »" />
+      </div>
+      <div class="champ">
+        <label for="rel-profil">Profil des admis</label>
+        <input type="text" id="rel-profil" placeholder="ex. mention, spécialités…" />
+      </div>
+    </div>
+    <div class="champ">
+      <label for="rel-notes">Notes / source</label>
+      <input type="text" id="rel-notes" placeholder="D'où vient cette info, et quand relevée" />
+    </div>
+    <button type="submit" class="bouton bouton-primaire">Ajouter ce relevé</button>
+  </form>
+
+  <div class="tableau-conteneur" style="margin-bottom:40px;">
+    <table>
+      <thead><tr><th>Année</th><th>Formation</th><th>Places</th><th>Taux d'accès</th><th>Profil admis</th><th>Notes</th><th></th></tr></thead>
+      <tbody id="corps-table-releves"></tbody>
+    </table>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/calculs.js"></script>
+<script src="js/util.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/admission.js"></script>
+</body>
+</html>
